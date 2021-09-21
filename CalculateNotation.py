@@ -35,4 +35,3 @@ while flag:
 
     print("{}진법의 {}을 {}진법으로 바꾼 결과는: {}".format(x, N, y, int(Ny)))
     print("-"*40 + "다음 계산 경계선")
-    

@@ -1,12 +1,24 @@
-dp = [i+1 for i in range(6)]
-countList = []
-for x in dp:
-    for y in dp:
-        for z in dp:
-            countList.append(x+y+z)
+from collections import deque
+import time
 
-cL = []
-for x in range(3,19):
-    cL.append([x, countList.count(x)])
+start = time.time()
+testList = []
 
-print(cL)
+n, k = 2534,2534
+visit = [0 for i in range(100001)]
+queue = deque()
+queue.append([n, 0])
+while queue:
+    p, d = queue[0][0], queue[0][1]
+    if p == k:
+        break
+    queue.popleft()
+    visit[p] = 1
+    if p - 1 >= 0 and visit[p - 1] == 0:
+        queue.append([p - 1, d + 1])
+    if p + 1 <= 100000 and visit[p + 1] == 0:
+        queue.append([p + 1, d + 1])
+    if p * 2 <= 100000 and visit[p * 2] == 0:
+        queue.append([p * 2, d + 1])
+print(queue[0][1])
+print('time :', time.time() - start)
