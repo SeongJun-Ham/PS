@@ -1,16 +1,6 @@
-import sys
-import heapq as h
+qL = [[0,0], [1,0], [2, 0], [3,0], [0, 1], [1, 1], [2, 1], [3,1]]
+print(qL)
 
-N = int(sys.stdin.readline())
-
-qL = []
-
-for i in range(N):
-    x = int(sys.stdin.readline())
-    if x == 0:
-        if len(qL) == 0:
-            print(0)
-        else:
-            print(h.heappop(qL))
-    else:
-        h.heappush(qL, x)
+while qL:
+    print(qL.pop(0))
+    print(qL)
