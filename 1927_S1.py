@@ -11,6 +11,6 @@ for i in range(N):
         if len(qL) == 0:
             print(0)
         else:
-            print(h.heappop(qL))
+            print(qL.pop(qL.index(min(qL))))
     else:
-        h.heappush(qL, x)
+        qL.append(x)
