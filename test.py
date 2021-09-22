@@ -1,6 +1,14 @@
-qL = [[0,0], [1,0], [2, 0], [3,0], [0, 1], [1, 1], [2, 1], [3,1]]
-print(qL)
-
-while qL:
-    print(qL.pop(0))
-    print(qL)
+import sys
+input = sys.stdin.readline
+def check(num):
+    num = list(str(num))
+    for i in num:
+        if i in s: return False
+    return True
+n = int(input())
+m = int(input())
+s = list(input().strip())
+result = abs(n - 100)
+for i in range(1000001):
+    if check(i): result = min(result, len(str(i)) + abs(i - n))
+print(result)
