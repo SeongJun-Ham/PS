@@ -11,6 +11,7 @@ while flag:
     for i in range(len(N)):
         N10 += int(N[len(N)-i-1])*x**i
 
+    print('10진법으로는 :{}'.format(N10))
     start = 0
 
     while True:
@@ -31,7 +32,7 @@ while flag:
             N10 -= y**end
             numstart += 1
 
-        Ny += str(numstart)
+        Ny += str(numstart) + " "
 
-    print("{}진법의 {}을 {}진법으로 바꾼 결과는: {}".format(x, N, y, int(Ny)))
+    print("{}진법의 {}을 {}진법으로 바꾼 결과는: {}".format(x, N, y, Ny))
     print("-"*40 + "다음 계산 경계선")

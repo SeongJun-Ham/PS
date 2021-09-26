@@ -6,22 +6,24 @@ for recursion in range(T):
     func = list(sys.stdin.readline())
     n = int(sys.stdin.readline())
     arrayStr = str(sys.stdin.readline())
+    RStack = 1
+    DLeft = 0
+    DRight = 0
+    
     if func.count("D") > n :
         print('error')
     else:
-        flag = 1
         array = list(map(str, arrayStr[1:-2].split(",")))
         for fun in func:
-            if fun == "R" and flag == 1:
-                flag = 0
-            elif fun == "R" and flag ==0:
-                flag = 1
+            if fun == "R":
+                RStack += 1
             elif fun == "D":
-                if flag == 1:
-                    array.pop(0)
-                elif flag == 0:
-                    array.pop()
-        if flag == 0:
+                if RStack % 2:
+                    DLeft += 1
+                else:
+                    DRight += 1
+        array = array[DLeft:n-DRight]
+        if not RStack % 2:
             array.reverse()
         resultArray = ','.join(array)
         result = '['
