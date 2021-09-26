@@ -12,11 +12,11 @@ for i in range(T):
         qL.append(Q)
 
     while qL:
-        quene = []
-        quene.append(qL.pop(0))
+        queue = []
+        queue.append(qL.pop(0))
 
-        while quene:
-            current = quene.pop(0)
+        while queue:
+            current = queue.pop(0)
             adjacencyList = []
             adjacencyList.append([current[0] + 1, current[1]])
             adjacencyList.append([current[0], current[1] - 1])
@@ -25,7 +25,7 @@ for i in range(T):
 
             for neibor in adjacencyList:
                 if neibor in qL:
-                    quene.append(qL.pop(qL.index(neibor)))
+                    queue.append(qL.pop(qL.index(neibor)))
         
         count += 1
     

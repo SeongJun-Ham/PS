@@ -19,16 +19,16 @@ KevinBaconList = []
 for x in vertexList:
     visitedList = []
     visitedList.append(x)
-    quene = []
-    quene.append([x, 0])
+    queue = []
+    queue.append([x, 0])
     KevinBacon = 0
 
-    while quene:
-        current = quene.pop(0)
+    while queue:
+        current = queue.pop(0)
         for neibor in adjacencyList[current[0] - 1]:
             if not neibor in visitedList:
                 visitedList.append(neibor)    
-                quene.append([neibor, current[1] + 1])
+                queue.append([neibor, current[1] + 1])
                 KevinBacon += current[1] + 1
     
     KevinBaconList.append(KevinBacon)
