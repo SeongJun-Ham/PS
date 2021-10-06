@@ -1,30 +1,49 @@
 import sys
 
 T = int(sys.stdin.readline())
+result = ""
 
-for recursion in range(T):
-    func = list(sys.stdin.readline())
-    n = int(sys.stdin.readline())
-    arrayStr = str(sys.stdin.readline())
-    if func.count("D") > n :
-        print('error')
+for i in range(T):
+    k = int(sys.stdin.readline())
+    Queue = []
+    for i in range(k):
+        func, num = map(str, sys.stdin.readline().split())
+        num = int(num)
+        if func == "I":
+            if Queue:
+                if Queue[0] >= num:
+                    Queue.insert(0, num)
+                elif Queue[len(Queue) - 1] <= num:
+                    Queue.append(num)
+                else:
+                    start = 0
+                    end = len(Queue) - 1
+                    while True:
+                        mid = (start + end) // 2
+                        if num == Queue[mid]:
+                            Queue.insert(mid, num)
+                            break
+                        elif num > Queue[mid]:
+                            start = mid
+                        elif num < Queue[mid]:
+                            end = mid
+
+                        if end - start == 1:
+                            Queue.insert(end, num)
+                            break
+            else:
+                Queue.append(num)
+
+        else:
+            if Queue:
+                if num == 1:
+                    k = Queue.pop()
+                elif num == -1:
+                    k = Queue.pop(0)
+    
+    if Queue:
+        result += "{} {}\n".format(Queue[len(Queue) - 1],Queue[0])
     else:
-        flag = 1
-        array = list(map(str, arrayStr[1:-2].split(",")))
-        for fun in func:
-            if fun == "R" and flag == 1:
-                flag = 0
-            elif fun == "R" and flag ==0:
-                flag = 1
-            elif fun == "D":
-                if flag == 1:
-                    array.pop(0)
-                elif flag == 0:
-                    array.pop()
-        if flag == 0:
-            array.reverse()
-        resultArray = ','.join(array)
-        result = '['
-        result += resultArray
-        result += ']'
-        print(result)
+        result += "EMPTY\n"
+
+print(result[:-1])
