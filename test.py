@@ -1,5 +1,11 @@
-import sys
+a = [1, 2, 3, 4]
+b = [3, 4, 5, 6]
+c = []
+for i in range(1,9):
+    if i not in a and i not in b:
+        c.append(i)
 
+<<<<<<< HEAD
 T = int(sys.stdin.readline())
 result = ""
 
@@ -47,3 +53,6 @@ for i in range(T):
         result += "EMPTY\n"
 
 print(result[:-1])
+=======
+print(c)
+>>>>>>> 33a313da99d20e810397c0a98f3f04828ca3fd6e
