@@ -1,9 +1,3 @@
-<<<<<<< HEAD
-k = '3 3\nemtpy\n4 6\n'
-print(k)
-print("------------------")
-print(k[:-1])
-=======
 import sys
 
 T = int(sys.stdin.readline())
@@ -34,4 +28,3 @@ for recursion in range(T):
 
 for i in resultList:
     print(i)
->>>>>>> 33a313da99d20e810397c0a98f3f04828ca3fd6e
