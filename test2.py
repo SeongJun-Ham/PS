@@ -1,30 +1,46 @@
 import sys
 
 T = int(sys.stdin.readline())
-resultList = []
 
-for recursion in range(T):
-    func = list(sys.stdin.readline())
-    n = int(sys.stdin.readline())
-    arrayStr = str(sys.stdin.readline())
-    if func.count("D") > n :
-        resultList.append('error')
+result = []
+for _ in range(T):
+    K, C = map(int, sys.stdin.readline().split())
+
+    if K%C == 0 or C%K == 0:
+        if K == 1:
+            if C == 1:
+                result.append(2)
+            else:
+                result.append(1)
+        elif C == 1:
+            result.append(K+1)
+        else:
+            result.append("IMPOSSIBLE")
     else:
-        start = 0
-        array = []
-        for i in range(int(len(arrayStr)/2)-1):
-            array.append(arrayStr[2*i+1])
-        while len(func)-1:
-            current = func.pop(0)
-            if current == "R":
-                array.reverse()
-            elif current == "D":
-                array.pop(0)
-        resultArray = ','.join(array)
-        result = '['
-        result += resultArray
-        result += ']'
-        resultList.append(result)
-
-for i in resultList:
+        m = max(K, C)
+        n = min(K, C)
+        r = [m, n]
+        s = [1, 0]
+        t = [0, 1]
+        
+        while r[1] != 0:
+            save = divmod(r[0], r[1])
+            r = [r[1], save[1]]
+            s = [s[1], s[0]-save[0]*s[1]]
+            t = [t[1], t[0]-save[0]*t[1]]
+            print("r: {}, s: {}, t: {}".format(r, s, t))
+        
+        if r[0] == 1:
+            if K > C:
+                if t[0] < 0:
+                    t[0] += K
+                result.append(t[0])
+            else:
+                if s[0] < 0:
+                    s[0] += K
+                result.append(s[0])
+        else:
+            result.append("IMPOSSIBLE")
+            
+for i in result:
     print(i)
