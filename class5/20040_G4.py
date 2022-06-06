@@ -1,5 +1,5 @@
 import sys
-sys.setrecursionlimit(10**5)
+
 def find(x):
     if parent[x] == x:
         return x
@@ -17,12 +17,12 @@ for i in range(m):
         print(ans)
         sys.exit(0)
     elif parent[a] == a and parent[b] == b:
-        parent[b] = a
+        parent[max(a, b)] = min(a, b)
     elif parent[a] == a:
         parent[a] = find(b)
     elif parent[b] == b:
         parent[b] = find(a)
     else:
-        parent[find(a)] = find(b)
+        parent[find(max(a, b))] = find(min(a,b))
 
 print(0)
