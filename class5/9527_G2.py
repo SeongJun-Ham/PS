@@ -1,5 +1,3 @@
-A, B = map(int, input().split())
-    
 def OneOfNum(N):
     save = 0
     ans = 0
@@ -14,5 +12,8 @@ def OneOfNum(N):
     else:
         ans += save
     return ans
+
+
+A, B = map(int, input().split())
 
 print(OneOfNum(B) - OneOfNum(A-1))
